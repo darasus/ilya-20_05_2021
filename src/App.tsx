@@ -1,10 +1,31 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import { WebSocketDemo } from "./Socket";
+import { OrderBookContainer } from "./components/OrderBookContainer";
+import { useOrderBook } from "./utils/hooks/useOrderBook";
+import { getAsks } from "./utils/getAsks";
+import { getBids } from "./utils/getBids";
+import { getMaxSize } from "./utils/getMaxSize";
 
-function App() {
-  return <WebSocketDemo />;
-}
+export const App = () => {
+  const { data, isReady } = useOrderBook();
+  const bids = getBids(data.current.bids);
+  const asks = getAsks(data.current.asks);
+  const maxSize = getMaxSize(data.current);
 
-export default App;
+  if (!isReady) return null;
+
+  return (
+    <div>
+      <OrderBookContainer
+        orders={asks}
+        label="Sell orders"
+        maxSize={maxSize}
+        variant="red"
+      />
+      <OrderBookContainer
+        orders={bids}
+        label="Buy orders"
+        maxSize={maxSize}
+        variant="green"
+      />
+    </div>
+  );
+};

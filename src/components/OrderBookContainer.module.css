@@ -1,0 +1,10 @@
+.orderBookContainer {
+    background-color: rgb(20, 21, 26);
+}
+
+.label {
+    color: #cecece;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 4px 6px;
+}

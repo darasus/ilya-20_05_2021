@@ -1,5 +1,5 @@
 import React from "react";
-import useWebSocket from "react-use-websocket";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 import { Order } from "../../types";
 import { isOrderBookData } from "../isOrderBookData";
 import { mergeOrders } from "../mergeOrders";
@@ -12,8 +12,15 @@ export const useOrderBook = () => {
     asks: [],
   });
 
-  const { sendMessage, lastJsonMessage } = useWebSocket(
-    "wss://www.cryptofacilities.com/ws/v1"
+  const { lastJsonMessage, sendJsonMessage, readyState } = useWebSocket(
+    "wss://www.cryptofacilities.com/ws/v1",
+    {
+      retryOnError: true,
+      onError(event) {
+        // silent error
+        console.error(event);
+      },
+    }
   );
 
   React.useEffect(() => {
@@ -28,14 +35,18 @@ export const useOrderBook = () => {
   }, [lastJsonMessage]);
 
   React.useEffect(() => {
-    sendMessage(
-      JSON.stringify({
-        event: "subscribe",
-        feed: "book_ui_1",
-        product_ids: ["PI_XBTUSD"],
-      })
-    );
+    sendJsonMessage({
+      event: "subscribe",
+      feed: "book_ui_1",
+      product_ids: ["PI_XBTUSD"],
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return data;
+  const isReady = React.useMemo(
+    () => readyState === ReadyState.OPEN,
+    [readyState]
+  );
+
+  return { data, isReady };
 };

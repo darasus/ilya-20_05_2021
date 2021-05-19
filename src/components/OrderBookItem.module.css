@@ -1,0 +1,23 @@
+.orderBookItem {
+    position: relative;
+    display: flex;
+    color: #cecece;
+    padding: 4px 6px;
+}
+
+.orderBookItemValue {
+    width: 100px;
+    font-size: 12px;
+}
+
+.orderBookItemPriceValue {
+    font-weight: bold;
+}
+
+.orderBookItemSize {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.2;
+}
