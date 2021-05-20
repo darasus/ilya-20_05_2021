@@ -1,8 +1,11 @@
 .orderBookItem {
+    display: flex;
+    align-items: center;
     position: relative;
     display: flex;
-    color: #cecece;
-    padding: 4px 6px;
+    color: var(--white);
+    height: var(--gutter5x);
+    padding: 0 var(--gutter)
 }
 
 .orderBookItemValue {

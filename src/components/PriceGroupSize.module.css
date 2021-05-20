@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    align-items: center;
+    padding: var(--gutter2x);
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.value {
+    font-size: var(--fontSizeBody);
+    margin-right: var(--gutter)
+}
+
+.buttonGroup {
+    display: flex;
+}
+
+.button {
+    cursor: pointer;
+    display: block;
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    height: var(--gutter6x);
+    width: var(--gutter6x);
+    margin-right: var(--gutter);
+    border-radius: var(--gutter);
+}
+
+.button:disabled {
+    opacity: 0.5;
+}

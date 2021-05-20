@@ -1,3 +1,15 @@
+:root {
+  --black: rgb(20, 21, 26);
+  --white: #cecece;
+  --gutter: 5px;
+  --gutter2x: 10px;
+  --gutter3x: 15px;
+  --gutter4x: 20px;
+  --gutter5x: 25px;
+  --gutter6x: 30px;
+  --fontSizeBody: 12px;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
