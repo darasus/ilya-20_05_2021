@@ -1,7 +1,7 @@
 import { Order } from "../types";
 
-export const groupOrdersByPrice = (orders: Order[], priceGroupSize: number) => {
-  return orders.reduce<Order[]>((acc, [price, size]) => {
+export const groupOrdersByPrice = (orders: Order[], priceGroupSize: number) =>
+  orders.reduce<Order[]>((acc, [price, size]) => {
     const groupedPrice = Math.ceil(price / priceGroupSize) * priceGroupSize;
     const order = acc.find(([price]) => price === groupedPrice);
 
@@ -15,4 +15,3 @@ export const groupOrdersByPrice = (orders: Order[], priceGroupSize: number) => {
 
     return [...acc, [groupedPrice, size]];
   }, []);
-};

@@ -7,7 +7,7 @@ import React from "react";
 import { PriceGroupSize } from "./components/PriceGroupSize";
 
 export const App = () => {
-  const [priceGroupSize, setPriceGroupSize] = React.useState(0.5);
+  const [priceGroupSize, setPriceGroupSize] = React.useState<number>(0.5);
   const { data, isReady } = useOrderBook(priceGroupSize);
   const bids = getBids(data.current.bids);
   const asks = getAsks(data.current.asks);

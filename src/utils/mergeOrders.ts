@@ -1,5 +1,5 @@
 import { Order } from "../types";
-import { groupOrdersByPrice } from "./groupOrders";
+import { groupOrdersByPrice } from "./groupOrdersByPrice";
 
 export const mergeOrders = (
   state: Order[],
